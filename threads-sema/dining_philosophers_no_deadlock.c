@@ -28,11 +28,11 @@ int right(int p) {
 
 void get_forks(int p) {
     if (p == 4) {
-	Sem_wait(&forks[right(p)]);
-	Sem_wait(&forks[left(p)]);
+        Sem_wait(&forks[right(p)]);
+        Sem_wait(&forks[left(p)]);
     } else {
-	Sem_wait(&forks[left(p)]);
-	Sem_wait(&forks[right(p)]);
+        Sem_wait(&forks[left(p)]);
+        Sem_wait(&forks[right(p)]);
     }
 }
 
@@ -55,35 +55,35 @@ void *philosopher(void *arg) {
 
     int i;
     for (i = 0; i < args->num_loops; i++) {
-	think();
-	get_forks(p);
-	eat();
-	put_forks(p);
+        think();
+        get_forks(p);
+        eat();
+        put_forks(p);
     }
     return NULL;
 }
                                                                              
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-	fprintf(stderr, "usage: dining_philosophers <num_loops>\n");
-	exit(1);
+        fprintf(stderr, "usage: dining_philosophers <num_loops>\n");
+        exit(1);
     }
     printf("dining: started\n");
     
     int i;
     for (i = 0; i < 5; i++) 
-	Sem_init(&forks[i], 1);
+        Sem_init(&forks[i], 1);
 
     pthread_t p[5];
     arg_t a[5];
     for (i = 0; i < 5; i++) {
-	a[i].num_loops = atoi(argv[1]);
-	a[i].thread_id = i;
-	Pthread_create(&p[i], NULL, philosopher, &a[i]);
+        a[i].num_loops = atoi(argv[1]);
+        a[i].thread_id = i;
+        Pthread_create(&p[i], NULL, philosopher, &a[i]);
     }
 
     for (i = 0; i < 5; i++) 
-	Pthread_join(p[i], NULL); 
+        Pthread_join(p[i], NULL); 
 
     printf("dining: finished\n");
     return 0;

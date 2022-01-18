@@ -16,7 +16,7 @@ typedef struct {
 pr_thread_t *PR_CreateThread(void *(*start_routine)(void *)) {
     pr_thread_t *p = malloc(sizeof(pr_thread_t));
     if (p == NULL) 
-	return NULL;
+        return NULL;
     p->State = PR_STATE_INIT;
     Pthread_create(&p->Tid, NULL, start_routine, NULL); 
     // turn the sleep off to avoid the fault, sometimes...
@@ -40,7 +40,7 @@ void *mMain(void *arg) {
     // wait for thread structure to be initialized
     Pthread_mutex_lock(&mtLock);
     while (mtInit == 0)
-	Pthread_cond_wait(&mtCond, &mtLock);
+        Pthread_cond_wait(&mtCond, &mtLock);
     Pthread_mutex_unlock(&mtLock);
 
     int mState = mThread->State;

@@ -2,8 +2,8 @@
 all: va
 
 clean:
-	rm -f va
+    rm -f va
 
 va: va.c
-	gcc -o va va.c -Wall
+    gcc -o va va.c -Wall
 

@@ -16,7 +16,7 @@ void Zem_init(Zem_t *z, int value) {
 void Zem_wait(Zem_t *z) {
     Mutex_lock(&z->lock);
     while (z->value <= 0)
-	Cond_wait(&z->cond, &z->lock);
+        Cond_wait(&z->cond, &z->lock);
     z->value--;
     Mutex_unlock(&z->lock);
 }

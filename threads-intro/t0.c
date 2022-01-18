@@ -12,8 +12,8 @@ void *mythread(void *arg) {
 
 int main(int argc, char *argv[]) {                    
     if (argc != 1) {
-	fprintf(stderr, "usage: main\n");
-	exit(1);
+        fprintf(stderr, "usage: main\n");
+        exit(1);
     }
 
     pthread_t p1, p2;

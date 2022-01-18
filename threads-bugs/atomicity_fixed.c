@@ -24,10 +24,10 @@ void *thread1(void *arg) {
     printf("t1: before check\n");
     Pthread_mutex_lock(&proc_info_lock);
     if (thd->proc_info) {
-	printf("t1: after check\n");
-	sleep(2);
-	printf("t1: use!\n");
-	printf("%d\n", thd->proc_info->pid);
+        printf("t1: after check\n");
+        sleep(2);
+        printf("t1: use!\n");
+        printf("%d\n", thd->proc_info->pid);
     }
     Pthread_mutex_unlock(&proc_info_lock);
     return NULL;
@@ -45,8 +45,8 @@ void *thread2(void *arg) {
 
 int main(int argc, char *argv[]) {                    
     if (argc != 1) {
-	fprintf(stderr, "usage: main\n");
-	exit(1);
+        fprintf(stderr, "usage: main\n");
+        exit(1);
     }
     thread_info_t t;
     p.pid = 100;

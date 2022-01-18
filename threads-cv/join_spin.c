@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     printf("parent: begin\n");
     Pthread_create(&p, NULL, child, NULL);
     while (done == 0) 
-	; // spin
+        ; // spin
     printf("parent: end\n");
     return 0;
 }

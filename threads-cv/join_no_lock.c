@@ -23,9 +23,9 @@ int main(int argc, char *argv[]) {
     Mutex_lock(&m);
     printf("parent: check condition\n");
     while (done == 0) {
-	sleep(2);
-	printf("parent: wait to be signalled...\n");
-	Cond_wait(&c, &m); 
+        sleep(2);
+        printf("parent: wait to be signalled...\n");
+        Cond_wait(&c, &m); 
     }
     Mutex_unlock(&m);
     printf("parent: end\n");

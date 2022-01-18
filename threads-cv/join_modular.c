@@ -32,7 +32,7 @@ void sync_signal(synchronizer_t *s) {
 void sync_wait(synchronizer_t *s) {
     Mutex_lock(&s->m);
     while (s->done == 0) 
-	Cond_wait(&s->c, &s->m); 
+        Cond_wait(&s->c, &s->m); 
     s->done = 0; // reset for next use
     Mutex_unlock(&s->m);
 }

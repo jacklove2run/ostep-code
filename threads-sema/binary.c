@@ -18,9 +18,9 @@ volatile int counter = 0;
 void *child(void *arg) {
     int i;
     for (i = 0; i < 10000000; i++) {
-	Sem_wait(&mutex);
-	counter++;
-	Sem_post(&mutex);
+        Sem_wait(&mutex);
+        counter++;
+        Sem_post(&mutex);
     }
     return NULL;
 }

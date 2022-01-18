@@ -4,14 +4,14 @@ CFLAGS := -Wall -Werror -I../include -pthread
 OS     := $(shell uname -s)
 LIBS   := 
 ifeq ($(OS),Linux)
-	LIBS += -pthread
+        LIBS += -pthread
 endif
 
 SRCS   := atomicity.c \
-	atomicity_fixed.c \
-	ordering.c \
-	ordering_fixed.c \
-	deadlock.c
+        atomicity_fixed.c \
+        ordering.c \
+        ordering_fixed.c \
+        deadlock.c
 
 OBJS   := ${SRCS:c=o}
 PROGS  := ${SRCS:.c=}
@@ -20,10 +20,10 @@ PROGS  := ${SRCS:.c=}
 all: ${PROGS}
 
 ${PROGS} : % : %.o Makefile
-	${CC} $< -o $@ ${LIBS}
+        ${CC} $< -o $@ ${LIBS}
 
 clean:
-	rm -f ${PROGS} ${OBJS}
+        rm -f ${PROGS} ${OBJS}
 
 %.o: %.c Makefile
-	${CC} ${CFLAGS} -c $<
+        ${CC} ${CFLAGS} -c $<

@@ -24,8 +24,8 @@ void *child(void *arg) {
 
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-	fprintf(stderr, "usage: throttle <num_threads> <sem_value>\n");
-	exit(1);
+        fprintf(stderr, "usage: throttle <num_threads> <sem_value>\n");
+        exit(1);
     }
     int num_threads = atoi(argv[1]);
     int sem_value = atoi(argv[2]);
@@ -37,10 +37,10 @@ int main(int argc, char *argv[]) {
 
     int i;
     for (i = 0; i < num_threads; i++) 
-	Pthread_create(&c[i], NULL, child, (void *) (long long int)i);
+        Pthread_create(&c[i], NULL, child, (void *) (long long int)i);
 
     for (i = 0; i < num_threads; i++) 
-	Pthread_join(c[i], NULL);
+        Pthread_join(c[i], NULL);
 
     printf("parent: end\n");
     return 0;
